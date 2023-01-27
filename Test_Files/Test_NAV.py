@@ -4,9 +4,6 @@ import matplotlib.pyplot as plt
 import pytesseract
 import math
 
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-
 
 def show(name, img, show=0):
     if show != 0:
