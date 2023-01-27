@@ -21,7 +21,7 @@ k = open("result_fail.txt", 'w', encoding='UTF-8')
 h = open("result_header_issue.txt", 'w', encoding='UTF-8')
 
 # Company_List DB create to adjust the Character
-c = open("Company_List.txt", 'r')
+c = open("Company_List\Company_List.txt", 'r')
 lines = c.readlines()
 company_list = []
 for line in lines:
