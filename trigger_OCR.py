@@ -22,8 +22,7 @@ SECRET_KEY = 'DOmExhYrrii+8sGMmkxba1du6BaHDwCJi+ikAyUX'
 # path -> NGLYOLO/runs/detect
 # path_to_watch = C:\Users\ngltr\OneDrive\Desktop\NGL_YOLOV5\runs\detect
 # path_to_watch = C:\Users\ngl\Desktop\NGL_YOLOV5\runs\detect
-print("\nC:\\Users\\ngltr\\OneDrive\\Desktop\\NGL_YOLOV5\\runs\\detect")
-print("C:\\Users\\ngl\\Desktop\\NGL_YOLOV5\\runs\\detect")
+print("\nC:\\Users\\frank\\OneDrive\\Desktop\\NGL_YOLOV5\\runs\\detect")
 print(" --- Find NGLYOLO-runs-detect-way --- " )
 print("Path_to_wacth_CCTV : ")
 path_to_watch = str(input())
