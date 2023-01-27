@@ -27,7 +27,7 @@ print(" --- Find NGLYOLO-runs-detect-way --- " )
 print("Path_to_wacth_CCTV : ")
 path_to_watch = str(input())
 
-def make_json(result, name, file_path, now, newfolder):  # If right CntrNo detected, send .json file to YMS
+def make_json(result, cntr_size, name, file_path, now, newfolder):  # If right CntrNo detected, send .json file to YMS
     if len(result) == 11 or result != "Can't Detect":
         img_data = name.split('-')
         format = '%m/%d/%Y %H:%M:%S'
@@ -35,6 +35,7 @@ def make_json(result, name, file_path, now, newfolder):  # If right CntrNo detec
         d['division'] = img_data[0]
         d['cameraPosition'] = img_data[1]
         d['cntrNo'] = result
+        d['cntrSize'] = cntr_size
         d['imgPath'] = newfolder + "/" + name + ".jpg"
         d['imgNm'] = name+".jpg"
         d['detectedTime'] = now.strftime(format)
@@ -112,9 +113,11 @@ def crops(files, dir, newfolder, company_list):
 
                     if str(ext) == ".jpg":
                         print("\n")
-                        chars, result, reverse = Main_by_Trigger.main(img, gr_bl_constant, gr_bl_constant_reverse, h_max, h_min, result_possibility, company_list)                    
-                        print("Results-- : " + result)
-                        if make_json(result, name, file_path, now, newfolder): success_detected = True
+                        chars, cntr_number, reverse, cntr_size = Main_by_Trigger.main(img, gr_bl_constant, gr_bl_constant_reverse,\
+                             h_max, h_min, result_possibility, company_list)                    
+                        print("Cntr_Number-- : " + cntr_number)
+                        print("Cntr_Size-- : " + cntr_size)
+                        if make_json(cntr_number, cntr_size, name, file_path, now, newfolder): success_detected = True
 
     if success_detected == True and len(glob.glob(file_path + "\\*.json")) != 0:  # If it is not empty, send API to YMS
         file = glob.glob(file_path + "\\*.json")
@@ -131,6 +134,7 @@ def crops(files, dir, newfolder, company_list):
             print("img_path : ", img_path)  # 010620234\crops\Container_Number\CKOUT-153529-15355221.jpg,
             img_to_yms(img_path, fn[0])
 
+
 def company_list_download():
     # Company_List DB create to adjust the Character
     c = open("Company_List\Company_List.txt", 'r')
@@ -144,6 +148,7 @@ def company_list_download():
         company_list.append(line)
     c.close()
     return company_list
+
 
 def run():
     old = os.listdir(path_to_watch)

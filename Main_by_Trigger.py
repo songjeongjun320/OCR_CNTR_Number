@@ -152,7 +152,6 @@ def img_load(img):
 
 
 def img_denoise(img_ori):
-
     height,width,channel = img_ori.shape
     # img_denoised = cv2.fastNlMeansDenoisingColored(img_ori, None, 10,10,41,41)
     return img_ori,height,width,channel
@@ -351,7 +350,10 @@ def rotate_plate_img(height, width, matched_result, black, \
         img_cropped = cv2.rectangle(img_cropped, pt1=(0,0), pt2=(int(side_width)-5, plate_height), color=(0,0,0), thickness=-1)
         img_cropped = cv2.rectangle(img_cropped, pt1=(int(plate_width) - int(side_width) + 5, 0), pt2=(int(plate_width),int(plate_height)), color=(0,0,0), thickness=-1)
         show("After Rotated", img_cropped)
-    return img_cropped, plate_infos
+    try:
+        return img_cropped, plate_infos
+    except:
+        return black, plate_infos
 
 
 def erosion_detect(img_cropped, company_list, iteration):
