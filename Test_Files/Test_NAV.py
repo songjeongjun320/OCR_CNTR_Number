@@ -463,6 +463,16 @@ def cntr_size_contour_draw(cntr_size_result_idx, cntr_size_list_x, black, possib
     return cntr_size_matched_result, black
 
 
+def cntr_size_adjust(cntr_size_chars):
+    result_chars = ''
+    for c in cntr_size_chars:
+        if ord('A') <= ord(c) <= ord('Z') or c.isdigit():
+            result_chars += c
+    result_chars = result_chars.replace('1','').replace('6','G')
+    result_chars = result_chars + "1"
+    return result_chars
+
+
 def main(img, aim, gr_bl_constant, result_possibility,company_list):
     reverse = False
     switch_button = result_possibility # if True, can return // if False, can't return
@@ -512,7 +522,7 @@ def main(img, aim, gr_bl_constant, result_possibility,company_list):
         # Re-Conduct, black-white-converse
         return main(img2, aim2, gr_bl_constant_reverse, True, company_list)
     elif output == 0 and switch_button == True:
-        return "Can't Detect", "Can't Detect", reverse
+        return "Can't Detect", "Can't Detect", reverse, "Can't Detect"
 
     #### Rotate Plate Images ####
     img_cropped, plate_infos = rotate_plate_img(height, width, matched_result, black_copy)
@@ -537,7 +547,7 @@ def main(img, aim, gr_bl_constant, result_possibility,company_list):
         final_img = cv2.rectangle(final_img, pt1=(info['x'], info['y']), pt2=(info['x']+info['w'], info['y']+info['h']), color=(255,0,0), thickness=2)
         show(result_chars, final_img)
     except:
-        return "Can't Detect", "Can't Detect", reverse
+        return "Can't Detect", "Can't Detect", reverse, "Can't Detect"
 
     ### CNTR_SIZE_CHECK ###
     print('CNTR SIZE DETECTING')
@@ -546,13 +556,10 @@ def main(img, aim, gr_bl_constant, result_possibility,company_list):
     cntr_size_matched_result, black_copy = cntr_size_contour_draw(cntr_size_result_idx,cntr_size_list_x, black_copy, possible_contours, height, width, channel)
     cntr_size_img_cropped, cntr_size_plate_infos = rotate_plate_img(height, width, cntr_size_matched_result, black_copy, \
         PLATE_WIDTH_PADDING=3.0, PLATE_HEIGHT_PADDING=3.0, MIN_PLATE_RATIO=3, MAX_PLATE_RATIO=5)
-    #### Erosion & Detect ####
-    # iteration = 1
-    # result_char, cntr_size_img_cropped, chars = erosion_detect(cntr_size_img_cropped, company_list, iteration)
-    # result_chars = result_char
     cntr_size_chars, cntr_size_result_char = read(cntr_size_img_cropped, company_list)
-    print("CNTR SIZE : ", cntr_size_chars)
-    show(cntr_size_chars, cntr_size_img_cropped)
+    cntr_size_result_char = cntr_size_adjust(cntr_size_chars)
+    print("CNTR SIZE : ", cntr_size_result_char)
+    show(cntr_size_result_char, cntr_size_img_cropped)
 
     ### Confirm Container Number ###
-    return chars, result_chars, reverse
+    return chars, result_chars, reverse, cntr_size_result_char

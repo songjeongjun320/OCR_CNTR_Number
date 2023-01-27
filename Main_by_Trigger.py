@@ -447,6 +447,16 @@ def cntr_size_contour_draw(cntr_size_result_idx,cntr_size_list_x,black, possible
     return cntr_size_matched_result, black
 
 
+def cntr_size_adjust(cntr_size_chars):
+    result_chars = ''
+    for c in cntr_size_chars:
+        if ord('A') <= ord(c) <= ord('Z') or c.isdigit():
+            result_chars += c
+    result_chars = result_chars.replace('1','').replace('6','G')
+    result_chars = result_chars + "1"
+    return result_chars
+
+
 def main(img, gr_bl_constant, gr_bl_constant_reverse, h_max, h_min, result_possibility, company_list):
     reverse = False
     switch_button = result_possibility # if True, can return // if False, can't return
@@ -496,7 +506,7 @@ def main(img, gr_bl_constant, gr_bl_constant_reverse, h_max, h_min, result_possi
         # Re-Conduct, black-white-converse
         return main(img2, gr_bl_constant, gr_bl_constant_reverse, h_max, h_min, True, company_list)
     elif output == 0 and switch_button == True:
-        return "Can't Detect", "Can't Detect", reverse
+        return "Can't Detect", "Can't Detect", reverse, "Can't Detect"
 
     #### Rotate Plate Images ####
     img_cropped, plate_infos = rotate_plate_img(height, width, matched_result, black_copy)
@@ -521,7 +531,7 @@ def main(img, gr_bl_constant, gr_bl_constant_reverse, h_max, h_min, result_possi
         final_img = cv2.rectangle(final_img, pt1=(info['x'], info['y']), pt2=(info['x']+info['w'], info['y']+info['h']), color=(255,0,0), thickness=2)
         show(result_chars, final_img)
     except:
-        return "Can't Detect", "Can't Detect", reverse
+        return "Can't Detect", "Can't Detect", reverse, "Can't Detect"
 
 
     ### CNTR_SIZE_CHECK ###
@@ -533,8 +543,9 @@ def main(img, gr_bl_constant, gr_bl_constant_reverse, h_max, h_min, result_possi
     cntr_size_img_cropped, cntr_size_plate_infos = rotate_plate_img(height, width, cntr_size_matched_result, black_copy, \
         PLATE_WIDTH_PADDING=3.0, PLATE_HEIGHT_PADDING=2.5, MIN_PLATE_RATIO=3, MAX_PLATE_RATIO=25)
     cntr_size_chars, cntr_size_result_char = read(cntr_size_img_cropped, company_list)
-    print("CNTR SIZE : ", cntr_size_chars)
-    show(cntr_size_chars, cntr_size_img_cropped, 1)
+    cntr_size_result_char = cntr_size_adjust(cntr_size_chars)
+    print("CNTR SIZE : ", cntr_size_result_char)
+    show(cntr_size_result_char, cntr_size_img_cropped, 1)
 
     ### Confirm Container Number ###
-    return chars, result_chars, reverse
+    return chars, result_chars, reverse, cntr_size_result_char

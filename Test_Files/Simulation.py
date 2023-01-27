@@ -41,9 +41,9 @@ for img in img_files:
     name = name.replace("NAV_Noon_Samples\\","").replace(".jpg","")
     print("\n" + name)
     
-    chars, result, reverse = Test_NAV.main(img, aim, gr_bl_constant, result_possibility, company_list)
-    # chars, result, reverse = Test_NAV_Header.main(img, aim)
-    # chars, result, reverse = Test.main(img, aim)
+    cntr_number, result, reverse, cntr_size = Test_NAV.main(img, aim, gr_bl_constant, result_possibility, company_list)
+    # cntr_number, result, reverse = Test_NAV_Header.main(img, aim)
+    # cntr_number, result, reverse = Test.main(img, aim)
 
     # answer = answer.replace("Samples_HQ\\","")[0:11]
     answer = answer.replace("NAV_Noon_Samples\\","")[0:11]
@@ -53,7 +53,8 @@ for img in img_files:
         true = true+1
         a.write("================================\n")
         a.write("Answer : " + name + "\n")
-        a.write("Chars  : " + chars)
+        a.write("Cntr_number  : " + cntr_number)
+        a.write("Cntr_Size : " + cntr_size)
         a.write("Result : " + result + "\n")
         a.write("Success Rate : {0}".format(true/(true+false)*100)+ "\n")
     else:
@@ -61,13 +62,14 @@ for img in img_files:
         if former != name[0:11]:
             k.write("\n")
         k.write("================================\n")
-        if chars == "Can't Detect":
+        if cntr_number == "Can't Detect":
             k.write("Can't Detect")
         if name[0:4] != result[0:4]:
             k.write("Header Issue \n")
             h.write("================================\n")
             h.write("Answer : " + name + "\n")
-            h.write("Chars  : " + chars)
+            h.write("Cntr_number  : " + cntr_number)
+            h.write("Cntr_Size : " + cntr_size)
             h.write("Result : " + result + "\n")
             h.write("Success Rate : {0}".format(true/(true+false)*100)+ "\n")
             if reverse == True:
@@ -76,7 +78,8 @@ for img in img_files:
         if reverse == True:
             k.write("reverse\n")
         k.write("Answer : " + name + "\n")
-        k.write("Chars  : " + chars)
+        k.write("Cntr_number  : " + cntr_number)
+        k.write("Cntr_Size : " + cntr_size)
         k.write("Result : " + result + "\n")
         k.write("Success Rate : {0}".format(true/(true+false)*100)+ "\n")
     former = name[0:11]
