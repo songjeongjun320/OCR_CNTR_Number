@@ -54,9 +54,9 @@ def api_to_yms(fp):
     with open(fp, encoding='UTF-8') as json_file:
         data = json.load(json_file)
     headers = {'Content-type': 'application/json', 'Accept': '*/*', 'Cookie' : 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjY3NDI2NDA5LCJleHAiOjE2Njc1MTI4MDksInJvbGUiOiJST0xFX1VTRVIifQ.64v_dKMvak6pSjLpKCL1imDO6ma4oyHWJLsG_AFbC5guR-YoR6AB7gb9CJi-cx-fu1jK13U3tvwkOhpY8WQG4g'}
-    r = requests.post(url, data=json.dumps(data), headers=headers)
-    print("Status code: ", r.status_code)
-    return r.status_code, data["imgPath"]  # "010620234/CKOUT-153529-15355221.jpg"
+    # r = requests.post(url, data=json.dumps(data), headers=headers)
+    # print("Status code: ", r.status_code)
+    # return r.status_code, data["imgPath"]  # "010620234/CKOUT-153529-15355221.jpg"
 
 
 def img_to_yms(img_path, fn):  # Img send to YMS, ex fn = 01052023
@@ -68,11 +68,11 @@ def img_to_yms(img_path, fn):  # Img send to YMS, ex fn = 01052023
     img_name = img_name[-1]
     print("fn : ", fn)
     print("img_name :", img_name)
-    s3 = boto3.client('s3',
-                        region_name='us-west-2',
-                        aws_access_key_id=ACCESS_KEY,
-                        aws_secret_access_key=SECRET_KEY)
-    s3.upload_file(img_path, 'ngl-yms', fn + "/" + img_name)
+    # s3 = boto3.client('s3',
+    #                     region_name='us-west-2',
+    #                     aws_access_key_id=ACCESS_KEY,
+    #                     aws_secret_access_key=SECRET_KEY)
+    # s3.upload_file(img_path, 'ngl-yms', fn + "/" + img_name)
 
 
 def crops(files, dir, newfolder, company_list):
