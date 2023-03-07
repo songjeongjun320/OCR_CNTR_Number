@@ -24,7 +24,7 @@ SECRET_KEY = 'DOmExhYrrii+8sGMmkxba1du6BaHDwCJi+ikAyUX'
 # path_to_watch = C:\Users\ngl\Desktop\NGL_YOLOV5\runs\detect
 print("\nC:\\Users\\frank\\OneDrive\\Desktop\\NGL_YOLOV5\\runs\\detect")
 print(" --- Find NGLYOLO-runs-detect-way --- " )
-print("Path_to_wacth_CCTV : ")
+print("Path_to_wacth_YOLO : ")
 path_to_watch = str(input())
 
 def make_json(result, cntr_size, name, file_path, now, newfolder):  # If right CntrNo detected, send .json file to YMS
