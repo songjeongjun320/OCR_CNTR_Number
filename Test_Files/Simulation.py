@@ -54,7 +54,7 @@ for img in img_files:
         a.write("================================\n")
         a.write("Answer : " + name + "\n")
         a.write("Cntr_number  : " + cntr_number)
-        a.write("Cntr_Size : " + cntr_size, "\n")
+        a.write("Cntr_Size : " + cntr_size + "\n")
         a.write("Result : " + result + "\n")
         a.write("Success Rate : {0}".format(true/(true+false)*100)+ "\n")
     else:
@@ -69,7 +69,7 @@ for img in img_files:
             h.write("================================\n")
             h.write("Answer : " + name + "\n")
             h.write("Cntr_number  : " + cntr_number)
-            h.write("Cntr_Size : " + cntr_size, "\n")
+            h.write("Cntr_Size : " + cntr_size + "\n")
             h.write("Result : " + result + "\n")
             h.write("Success Rate : {0}".format(true/(true+false)*100)+ "\n")
             if reverse == True:
@@ -79,7 +79,7 @@ for img in img_files:
             k.write("reverse\n")
         k.write("Answer : " + name + "\n")
         k.write("Cntr_number  : " + cntr_number)
-        k.write("Cntr_Size : " + cntr_size, "\n")
+        k.write("Cntr_Size : " + cntr_size + "\n")
         k.write("Result : " + result + "\n")
         k.write("Success Rate : {0}".format(true/(true+false)*100)+ "\n")
     former = name[0:11]
