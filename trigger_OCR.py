@@ -15,14 +15,11 @@ import boto3
 gr_bl_constant = 100 # Constant value of threshold
 result_possibility = False # To check the condition of
 
-ACCESS_KEY = 'AKIAR76DGZNKHERXNGH4'
-SECRET_KEY = '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'
+ACCESS_KEY = ''
+SECRET_KEY = ''
 
-
-# path -> NGLYOLO/runs/detect
-# path_to_watch = C:\Users\ngltr\OneDrive\Desktop\NGL_YOLOV5\runs\detect
-# path_to_watch = C:\Users\ngl\Desktop\NGL_YOLOV5\runs\detect
-print("\nC:\\Users\\frank\\OneDrive\\Desktop\\NGL_YOLOV5\\runs\\detect")
+# path -> YOLO/runs/detect
+print("C:\\Users\\frank\\Desktop\\YOLOV5_CNTR_Number\\runs\\detect")
 print(" --- Find NGLYOLO-runs-detect-way --- " )
 print("Path_to_wacth_YOLO : ")
 path_to_watch = str(input())
@@ -50,7 +47,7 @@ def make_json(result, cntr_size, name, file_path, now, newfolder):  # If right C
 
 
 def api_to_yms(fp):
-    url = "http://35.85.252.213:8080/api/v1/ocr"
+    url = "" # url for the website
     with open(fp, encoding='UTF-8') as json_file:
         data = json.load(json_file)
     headers = {'Content-type': 'application/json', 'Accept': '*/*', 'Cookie' : 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjY3NDI2NDA5LCJleHAiOjE2Njc1MTI4MDksInJvbGUiOiJST0xFX1VTRVIifQ.64v_dKMvak6pSjLpKCL1imDO6ma4oyHWJLsG_AFbC5guR-YoR6AB7gb9CJi-cx-fu1jK13U3tvwkOhpY8WQG4g'}
@@ -69,10 +66,10 @@ def img_to_yms(img_path, fn):  # Img send to YMS, ex fn = 01052023
     print("fn : ", fn)
     print("img_name :", img_name)
     # s3 = boto3.client('s3',
-    #                     region_name='us-west-2',
+    #                     region_name='us-west-1',
     #                     aws_access_key_id=ACCESS_KEY,
     #                     aws_secret_access_key=SECRET_KEY)
-    # s3.upload_file(img_path, 'ngl-yms', fn + "/" + img_name)
+    # s3.upload_file(img_path, 'asu-ocr-img-bucket', fn + "/" + img_name)
 
 
 def crops(files, dir, newfolder, company_list):
