@@ -134,7 +134,7 @@ def cntr_last_digit(result_chars):
         last_digit = str(int(sum%11))
         if last_digit == '10':
             last_digit = '0'
-        print("Last_Digit : " + last_digit)
+        # print("Last_Digit : " + last_digit)
         if len(result_chars) == 10:
             result_chars = result_chars + last_digit
         elif len(result_chars) >= 11: ### len(result_chars) == 11 를 len(result_chars) >= 11 로 테스트중
@@ -165,7 +165,7 @@ def gray_black(gray, gr_bl_constant, gr_bl_constant_reverse):
     black = blackAndWhiteImage
     if gr_bl_constant == gr_bl_constant_reverse:
         black = 255 - black
-        print('REVERSE')
+        # print('REVERSE')
     return black
 
 
