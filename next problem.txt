@@ -1,5 +1,7 @@
-- For the security divide the file for AWS access key value
+1. For the security divide the file for AWS access key value
 and put gitignore.
 
+2. api_to_yms & img_to_yms -> After building web page
 
-- api_to_yms & img_to_yms -> After building web page
+3. One reading process make a lot of .json results. Should be careful to do not send all of them
+to AWS S3 bucket. Build the code to send the most perfect result to AWS
