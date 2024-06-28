@@ -174,7 +174,7 @@ def run():
                     crops(files, dir, newfolder[n], company_list)
                 else:
                     continue
-                print("Readed\n")
+                print("\n\nReading Operation Clear\n\n")
         else:
             continue
 
