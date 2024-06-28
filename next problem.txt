@@ -1,0 +1,5 @@
+- For the security divide the file for AWS access key value
+and put gitignore.
+
+
+- api_to_yms & img_to_yms -> After building web page

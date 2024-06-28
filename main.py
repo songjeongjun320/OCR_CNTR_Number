@@ -19,10 +19,12 @@ ACCESS_KEY = ''
 SECRET_KEY = ''
 
 # path -> YOLO/runs/detect
+print("\n\n=============================================================")
 print("C:\\Users\\frank\\Desktop\\YOLOV5_CNTR_Number\\runs\\detect")
-print(" --- Find NGLYOLO-runs-detect-way --- " )
+print(" --- Find YOLO-runs-detect-way --- " )
 print("Path_to_wacth_YOLO : ")
 path_to_watch = str(input())
+print("=============================================================")
 
 def make_json(result, cntr_size, name, file_path, now, newfolder):  # If right CntrNo detected, send .json file to YMS
     if len(result) == 11 or result != "Can't Detect":
@@ -120,21 +122,21 @@ def crops(files, dir, newfolder, company_list):
         file = glob.glob(file_path + "\\*.json")
         fp = file[0]
         print("json_file_name : ", file[0])
-        status_code, img_path = api_to_yms(fp)
+        # status_code, img_path = api_to_yms(fp)
 
-        if status_code == 200:  # 200 means success API to YMS
-            fn = img_path.split('\\')
-            img_path = img_path.replace("/", "\\")
-            print("IMG_PATH : ", img_path)
-            print("Status_Code : " , fn)
-            img_path = path_to_watch + "\\" + img_path.replace("\\","\\crops\\Container_Number\\")
-            print("img_path : ", img_path)  # 010620234\crops\Container_Number\CKOUT-153529-15355221.jpg,
-            img_to_yms(img_path, fn[0])
+        # if status_code == 200:  # 200 means success API to YMS
+        #     fn = img_path.split('\\')
+        #     img_path = img_path.replace("/", "\\")
+        #     print("IMG_PATH : ", img_path)
+        #     print("Status_Code : " , fn)
+        #     img_path = path_to_watch + "\\" + img_path.replace("\\","\\crops\\Container_Number\\")
+        #     print("img_path : ", img_path)  # 010620234\crops\Container_Number\CKOUT-153529-15355221.jpg,
+        #     img_to_yms(img_path, fn[0])
 
-
+# After changing AWS Textract, We don't need this code.
 def company_list_download():
     # Company_List DB create to adjust the Character
-    c = open("Company_List\Company_List.txt", 'r')
+    c = open(".\Company_List.txt", 'r')
     lines = c.readlines()
     company_list = []
 
@@ -175,6 +177,5 @@ def run():
                 print("Readed\n")
         else:
             continue
-
 
 run()
