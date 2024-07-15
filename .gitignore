@@ -15,7 +15,3 @@ dist/
 *.spec
 
 venv
-
-result_fail.txt
-result_header_issue.txt
-result_success.txt
