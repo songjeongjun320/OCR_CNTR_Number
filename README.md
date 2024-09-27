@@ -34,3 +34,43 @@ The **Container Number Extraction Project** aims to automate the extraction of c
 5. **Save & Export**:
    - Users can save the results in various formats (CSV, JSON) for further analysis or integration into existing logistics systems.
   
+## Mathematical Approach to Candidate Selection
+
+The process of identifying container number candidates and arranging contours follows a structured approach, using the following techniques:
+
+### Mathematical Formula for Aspect Ratio
+We calculate the aspect ratio of contours to filter out non-container-like candidates. The formula is:
+
+$$
+Aspect\ Ratio = \frac{Width\ of\ Contour}{Height\ of\ Contour}
+$$
+
+This ratio helps in eliminating regions that do not fit the expected width-to-height ratio of a container number.
+
+### Area Filtering
+Contours are filtered based on the area to ensure we focus on regions large enough to contain valid numbers. The area is calculated as:
+
+$$
+Area = Width \times Height
+$$
+
+Only contours within a reasonable size range are kept for further evaluation.
+
+### Contour Sorting and Arrangement
+Once the contours are filtered, we arrange them based on their position within the image, ensuring that the container number is read from left to right. This is achieved by sorting the contours along the x-axis. The following formula is used:
+
+$$
+Contour\ Arrangement = sort(x\ coordinates)
+$$
+
+This ensures that the characters are in the correct order for OCR recognition.
+
+## Results
+After processing, the detected container numbers will be displayed in the notebook, both visually (through highlighted contours on the image) and textually (as the OCR-extracted text).
+
+## Contact Information
+For any inquiries or collaborations, feel free to reach out to me:
+
+- **Email**: songjeongjun320@gmail.com
+- **LinkedIn**: [Your LinkedIn Profile](www.linkedin.com/in/junsong0602
+- **Portfolio**: [Your portfolio](https://songjeongjun320.github.io/)
