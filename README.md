@@ -18,4 +18,19 @@ The **Container Number Extraction Project** aims to automate the extraction of c
    ```bash
    git clone https://github.com/your-username/container-number-extraction.git
    pip install -r requirements.txt
-   
+2. **Choose `CNTR_Size.ipynb`**:
+   - This notebook handles the detection of container numbers.
+   - Sample images will be processed using the implemented logic, and the container numbers will be automatically detected and extracted.
+   - Results will be displayed, including the detected container numbers, along with confidence scores and the status (success/fail).
+
+3. **Processing**: 
+   - Once uploaded, the system preprocesses images to optimize clarity by adjusting brightness, contrast, and reducing noise.
+   - The system ensures the image is resized appropriately for the OCR engine.
+
+4. **Extract**:
+   - The OCR model extracts container numbers from the preprocessed image. 
+   - Detected numbers are displayed in the output view, with confidence scores and a success/fail status for each image.
+
+5. **Save & Export**:
+   - Users can save the results in various formats (CSV, JSON) for further analysis or integration into existing logistics systems.
+  
