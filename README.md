@@ -72,5 +72,5 @@ After processing, the detected container numbers will be displayed in the notebo
 For any inquiries or collaborations, feel free to reach out to me:
 
 - **Email**: songjeongjun320@gmail.com
-- **LinkedIn**: [Your LinkedIn Profile](www.linkedin.com/in/junsong0602
+- **LinkedIn**: [Your LinkedIn Profile](www.linkedin.com/in/junsong0602)
 - **Portfolio**: [Your portfolio](https://songjeongjun320.github.io/)
